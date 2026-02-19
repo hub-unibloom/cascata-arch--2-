@@ -1,0 +1,19 @@
+# =============================================================================
+# Cascata Database — Extension Configuration
+# This file is appended to postgresql.conf on first start
+# =============================================================================
+
+# Extensions that must be loaded at server start
+# pg_stat_statements: query performance monitoring (contrib, always available)
+# pg_cron: job scheduler (Tier 1+)
+shared_preload_libraries = 'pg_stat_statements,pg_cron'
+
+# pg_stat_statements configuration
+pg_stat_statements.track = all
+pg_stat_statements.max = 10000
+
+# pg_cron configuration 
+cron.database_name = 'cascata_system'
+
+# Performance tuning for extension workloads
+max_locks_per_transaction = 128
